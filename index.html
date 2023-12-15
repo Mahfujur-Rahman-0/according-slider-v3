@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="slideshow-container">
+        <div class="mySlides">
+          <img id="slide-img" src="Image/imgOne.jpg" />
+        </div>
+
+        <div class="mySlides">
+          <img id="slide-img" src="Image/imgTwo.jpg" />
+        </div>
+        <div class="mySlides">
+          <img id="slide-img" src="Image/imgOne.jpg" />
+        </div>
+        <div class="mySlides">
+          <img id="slide-img" src="Image/imgTwo.jpg" />
+        </div>
+        <div class="mySlides">
+          <img id="slide-img" src="Image/imgOne.jpg" />
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+    </div>
+    <script>
+      let slideIndex = 3;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let slideImg = document.querySelectorAll("#slide-img");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.width = "15%";
+          slides[i].style.clipPath =
+            "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)";
+          slides[i].style.transition = "clip-path .0s,all 1s";
+          slideImg[i].style.objectFit = "cover";
+        }
+        slides[slideIndex - 1].style.width = "85%";
+        slides[slideIndex - 1].style.clipPath =
+          "polygon(4% 0%, 100% 0%, 84% 297%, -3% 188%)";
+        slideImg[slideIndex - 1].style.width = "154%";
+        slides[slideIndex - 1].style.transition = "all 1s";
+      }
+    </script>
+  </body>
+</html>
